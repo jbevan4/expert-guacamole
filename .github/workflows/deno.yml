@@ -3,25 +3,22 @@ name: deno-linter
 on: push
 
 jobs:
-  deno-lint:
-    name: Lint code base
+  deno:
+    name: Running Deno Tools
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: setup deno-linter
+      - name: Setup Deno
         uses: denolib/setup-deno@v2
         with:
           deno-version: v1.x
 
-      - name: deno formatter
-        run: deno fmt
-
-      - name: deno linter
+      - name: Lint
         run: deno lint --unstable
 
-      - name: deno tester
+      - name: Test
         run: deno test
   
