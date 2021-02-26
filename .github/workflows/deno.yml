@@ -11,12 +11,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run deno-linter
+      - name: setup deno-linter
         uses: denolib/setup-deno@v2
         with:
           deno-version: v1.x
-      - run: |
-          deno --version
-          deno run https://deno.land/std/examples/welcome.ts
-          deno install --allow-read -n deno_cat https://deno.land/std/examples/cat.ts
-          deno_cat ./README.md
+
+      - name: deno formatter
+        run: deno fmt
+
+      - name: deno linter
+        run: deno lint --unstable
+
+      - name: deno tester
+        run: deno test
+  
