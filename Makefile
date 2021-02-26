@@ -2,7 +2,7 @@ format:
 		deno fmt
 
 test:
-		deno test
+		deno test --allow-net
 
 lint:
 		deno lint --unstable
