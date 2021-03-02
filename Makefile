@@ -1,15 +1,12 @@
-format:
+fmt:
 		deno fmt
 
 test:
-		deno test --allow-net
+		deno test --allow-all
 
 lint:
 		deno lint --unstable
 
-pre-push:
-		deno fmt
-		deno lint --unstable
-		deno test
+all: fmt lint test
 
-.PHONY: format test lint
+.PHONY: fmt test lint all
