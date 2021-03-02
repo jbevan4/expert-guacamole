@@ -15,10 +15,16 @@ jobs:
         uses: denolib/setup-deno@v2
         with:
           deno-version: v1.x
+      
+      - name: Format 
+        run: make fmt
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply deno fmt changes
 
       - name: Lint
         run: make lint
 
       - name: Test
         run: make test
-  
