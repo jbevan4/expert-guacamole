@@ -8,5 +8,4 @@ Deno.test("can query a server", async () => {
   const response = await request.text();
   assertEquals(response, "Hello World!");
   ls.destroy();
-  
 });
