@@ -1,22 +1,5 @@
-import { assertEquals, serve, Server } from "./deps.ts";
-
-class localServer {
-  runningServer: Server;
-  constructor() {
-    this.runningServer = serve({ port: 8000 });
-  }
-
-  async run() {
-    const body = "Hello World!";
-    for await (const req of this.runningServer) {
-      req.respond({ body });
-    }
-  }
-
-  destroy() {
-    this.runningServer.close();
-  }
-}
+import { assertEquals } from "./deps.ts";
+import { localServer } from "./local_server.ts";
 
 Deno.test("can query a server", async () => {
   const ls = new localServer();
