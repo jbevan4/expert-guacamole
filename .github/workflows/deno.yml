@@ -17,8 +17,8 @@ jobs:
           deno-version: v1.x
 
       - name: Lint
-        run: deno lint --unstable
+        run: make lint
 
       - name: Test
-        run: deno test
+        run: make test
   
