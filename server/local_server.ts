@@ -2,12 +2,16 @@ import { serve, Server } from "./deps.ts";
 
 class localServer {
   runningServer: Server;
-  constructor() {
-    this.runningServer = serve({ port: 8000 });
+  response: string;
+  port: number;
+  constructor(response: string, port: number) {
+    this.response = response;
+    this.port = port;
+    this.runningServer = serve({ port: this.port });
   }
 
   async run() {
-    const body = "Hello World!";
+    const body = this.response;
     for await (const req of this.runningServer) {
       req.respond({ body });
     }
